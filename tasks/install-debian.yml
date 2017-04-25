@@ -27,12 +27,14 @@
   apt:
     name:  "mongodb-org={{ mongodb_version|default('*') }}"
     state: present
+    force: yes
   notify: Restart mongodb
 
 - name: Ensure mongodb packages are up to date
   apt:
     name:  "{{ item }}={{ mongodb_version|default('*') }}"
     state: present
+    force: yes
   with_items: 
     - mongodb-org-server
     - mongodb-org-mongos
